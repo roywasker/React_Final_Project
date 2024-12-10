@@ -1,6 +1,7 @@
 
 const usersList = localStorage.getItem("users") != null ? JSON.parse(localStorage.getItem("users")) : [];
 const idCounter = localStorage.getItem("idCounter") != null ? JSON.parse(localStorage.getItem("idCounter")) : 0;
+const loginUser = localStorage.getItem("loginUser") != null ? JSON.parse(localStorage.getItem("loginUser")) : {};
 
 
 const updateLocalStorage = (itemName, data) => {
@@ -9,6 +10,7 @@ const updateLocalStorage = (itemName, data) => {
 
 
 const initialState = {
+    loginUser: loginUser,
     users: usersList,
     currentId: idCounter,
 };
@@ -20,12 +22,17 @@ const usersReducer = (state = initialState, action) => {
             const updatedUsers = [...state.users, newUser];
             updateLocalStorage("users", updatedUsers)
             updateLocalStorage("idCounter", state.currentId + 1)
-            return { ...state, users: updatedUsers, currentId: state.currentId + 1 , errorMessage: ""};
+            return { ...state, users: updatedUsers, currentId: state.currentId + 1, errorMessage: "" };
 
         case 'DELETE_USER':
-            const updatedDeleteUsers = state.users.filter((user)=> user.id != action.payload)
+            const updatedDeleteUsers = state.users.filter((user) => user.id != action.payload)
             updateLocalStorage("users", updatedDeleteUsers)
             return { ...state, users: updatedUsers };
+
+        case 'LOGIN_USER':
+            updateLocalStorage("loginUser", action.payload)
+            return { ...state, loginUser: action.payload };
+
 
         default:
             return state;

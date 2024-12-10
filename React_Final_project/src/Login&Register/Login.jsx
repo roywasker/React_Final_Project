@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 const Login = () => {
@@ -11,6 +11,8 @@ const Login = () => {
     })
 
     const users = useSelector((state) => state.users);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleLogin = () => {
         if (!user.userName || !user.password) {
@@ -19,7 +21,10 @@ const Login = () => {
         }
         const curretUser = users.find((item) => item.userName == user.userName)
         if (curretUser && curretUser.password == user.password) {
-            alert("good")
+            dispatch({ type: 'LOGIN_USER', payload: curretUser })
+            if (curretUser.admin == true) {
+                navigate('/menu')
+            }
         } else {
             alert("User name or password is incorrect")
         }

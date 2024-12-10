@@ -35,6 +35,7 @@ const Register = () => {
   return (
     <div style={{ backgroundColor: 'Gainsboro', width: "100%", padding: "50px" }}>
       <div style={{ backgroundColor: 'white', padding: "10px", borderRadius: "5px" }}>
+        <h2>New User Registration</h2>
         <h4 style={{ textAlign: "left" }}>First Name:</h4>
         <input type="text" name='first name' value={user.firstName}
           onChange={e => setUser({ ...user, firstName: e.target.value })}
@@ -53,7 +54,7 @@ const Register = () => {
           style={{ width: "90%", height: "25px", borderRadius: "5px" }} />
         <br /><br /><strong>Allow others see my orders: </strong>
         <input type="checkbox" name="allow others" onChange={e => setUser({ ...user, others: !user.others })} /> <br /> <br />
-        <button style={{ backgroundColor: "green", color: 'white', width: "90%" }} onClick={handleAddUser}>Save</button>
+        <button style={{ backgroundColor: "DodgerBlue", color: 'white', width: "90%" }} onClick={handleAddUser}>Create</button> <br /> <br />
       </div>
     </div>
   )
