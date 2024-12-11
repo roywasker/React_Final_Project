@@ -3,7 +3,7 @@ import React from 'react'
 import Register from './Login&Register/Register'
 import Login from './Login&Register/Login'
 import { Routes, Route } from 'react-router-dom'
-import Menu from './Admin/Menu'
+import Categories from './Admin/Categories'
 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Login />} />
       <Route path='/register' element={<Register />} />
-      <Route path='/menu' element={<Menu />} />
+      <Route path='/categories' element={<Categories/>} />
     </Routes>
   )
 }

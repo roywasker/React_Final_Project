@@ -4,10 +4,12 @@ import { useSelector, } from 'react-redux'
 
 
 const Menu = () => {
-    const loginUser = useSelector((state) => state.loginUser);
+    const loginUser = useSelector((state) => state.users.loginUser); // store the current login user
 
     const navigate = useNavigate();
 
+
+    // if any user is not login return to login page
     useEffect(() => {
         if (loginUser.userName == undefined) {
             navigate('/')
