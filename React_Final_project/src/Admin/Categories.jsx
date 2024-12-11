@@ -87,31 +87,38 @@ const Categories = () => {
     }
 
     return (
-        <div>
-            <Menu />
-            <div style={{ backgroundColor: "LightGray", padding: "20px", marginTop: "5%" }}>
-                <h1 style={{ textAlign: "left" }}>Categories</h1>
-                <div style={{ padding: "20px", width: "500px", backgroundColor: 'WhiteSmoke', borderRadius: "5px" }}>
-                    {categories.map((category) => {
-                        return <div key={category.id} style={{ textAlign: "left", backgroundColor: 'WhiteSmoke', border: "1px solid Gainsboro", borderRadius: "5px", padding: "20px", marginBottom: "10px" }}>
-                            {updatecategory.name == category.name ? <input type="text" value={updatecategory.newName} style={{ height: "28px" }}
-                                onChange={e => setUpdateCategory({ ...updatecategory, newName: e.target.value })} />
-                                : <h2 style={{ display: 'inline' }}>{category.name}</h2>}
+        <div style={{display: 'flex'}}>
+            <div style={{position: 'absolute',top: 0,left: "40%",}}>
+                <Menu />
+            </div>
 
+            {/* Categories content below Menu */}
+            <div style={{marginTop: '100px', padding: '20px',backgroundColor: "LightGray",
+            }}>
+                <h1 style={{ textAlign: "left" }}>Categories</h1>
+                <div style={{padding: "20px", width: "500px", backgroundColor: 'WhiteSmoke',borderRadius: "5px"}}>
+                    {categories.map((category) => (
+                        <div key={category.id} style={{textAlign: "left", backgroundColor: 'WhiteSmoke', border: "1px solid Gainsboro", borderRadius: "5px", padding: "20px", marginBottom: "10px"}}>
+                            {updatecategory.name === category.name ? (
+                                <input type="text" value={updatecategory.newName} style={{ height: "28px" }}
+                                    onChange={e => setUpdateCategory({ ...updatecategory, newName: e.target.value })}/>
+                            ) : (
+                                <h2 style={{ display: 'inline' }}>{category.name}</h2>
+                            )}
                             <button style={{ backgroundColor: "LightGray", marginLeft: "5%" }} onClick={() => handleUpdateCategory(category)}>Update</button>
                             <button style={{ backgroundColor: "LightGray", marginLeft: "5%" }} onClick={() => handleDeleteCategory(category)}>Remove</button>
                         </div>
-                    })}
+                    ))}
                     <input type="text" name='new category'
                         style={{ marginRight: "4%", borderRadius: "5px", width: "80%", height: "28px" }}
                         value={newcategory.name}
                         onChange={e => setNewCategory({ ...newcategory, name: e.target.value })}
-                        placeholder="Add new category" />
+                        placeholder="Add new category"/>
                     <button style={{ backgroundColor: "LimeGreen" }} onClick={handleAddNewCategory}>Add</button>
                 </div>
             </div>
         </div>
     )
 }
-
+    
 export default Categories

@@ -37,13 +37,19 @@ const categoriesInitialState = {
     currentId: getFromLocalStorage("idCategories", 0),
 };
 
+// Initial products States
+const productsInitialState = {
+    products: getFromLocalStorage("products", []),
+    currentId: getFromLocalStorage("idProducts", 0),
+};
+
 //user reducer
 const usersReducer = (state = usersInitialState, action) => {
     switch (action.type) {
         case 'ADD_USER':
 
             // build the new user object
-            const newUser = { ...action.payload, id: state.currentId + 1 };
+            const newUser = { ...action.payload, id: state.currentId + 1 , joinedAt: new Date().toLocaleDateString() };
             const updatedUsers = [...state.users, newUser];
             updateLocalStorage("users", updatedUsers)
             updateLocalStorage("idUser", state.currentId + 1)
@@ -99,10 +105,46 @@ const categoriesReducer = (state = categoriesInitialState, action) => {
     }
 };
 
+
+// products reducer 
+const productsReducer = (state = productsInitialState, action) => {
+    switch (action.type) {
+        case 'ADD_PRODUCTS':
+
+            // build the new product object
+            const newProduct = { ...action.payload, id: state.currentId + 1 };
+            const updatedNewProducts = [...state.products, newProduct];
+            updateLocalStorage("products", updatedNewProducts);
+            updateLocalStorage("idProducts", state.currentId + 1);
+            return { ...state, products: updatedNewProducts, currentId: state.currentId + 1 };
+
+        case 'DELETE_PRODUCTS':
+
+            //find the specific product
+            const updatedDeleteProducts = state.products.filter((product) => products.id != action.payload)
+            updateLocalStorage("products", updatedDeleteProducts)
+            return { ...state, products: updatedDeleteProducts };
+
+        case 'UPDATE_PRODUCTS':
+
+            //find the specific product and update his data
+            const modifiedProducts = state.products.map((product) =>
+                product.id == action.payload.id ? { ...product, ...action.payload } : product
+            );
+            updateLocalStorage("products", modifiedProducts);
+            return { ...state, products: modifiedProducts };
+
+        default:
+            return state;
+    }
+};
+
 // Combine the  Reducers
 const rootReducer = combineReducers({
     users: usersReducer,
     categories: categoriesReducer,
+    products: productsReducer
+    
 });
 
 export default rootReducer;
