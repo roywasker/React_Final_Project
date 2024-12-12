@@ -5,6 +5,7 @@ import Login from './Login&Register/Login'
 import { Routes, Route } from 'react-router-dom'
 import Categories from './Admin/Categories'
 import Products from './Admin/Products'
+import Customers from './Admin/Customers'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route path='/register' element={<Register />} />
       <Route path='/categories' element={<Categories/>} />
       <Route path='/products' element={<Products/>} />
+      <Route path='/customers' element={<Customers/>} />
     </Routes>
   )
 }

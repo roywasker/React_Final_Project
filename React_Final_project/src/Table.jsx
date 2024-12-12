@@ -5,8 +5,8 @@ const Table = ({ data }) => {
     const headers = Object.keys(data[0]);
 
     return (
-        <div style={{marginLeft: "10%"}}>
-             <table border="1" style={{ borderCollapse: "collapse", width: "80%" }}>
+        <div style={{ marginLeft: "10%", marginTop: "2%", marginBottom: "2%" }}>
+            <table border="1" style={{ borderCollapse: "collapse", width: "80%", backgroundColor: 'white' }}>
                 <thead>
                     <tr>
                         {
@@ -17,14 +17,17 @@ const Table = ({ data }) => {
                     </tr>
                 </thead>
                 <tbody>
+                    {/* Show the data in table */}
                     {
-                        data.map((row, index) => {
-                            return <tr key={index}>
-                                {Object.values(row).map((item, indexOfItem) => {
-                                    return <td key={indexOfItem}>{item}</td>
-                                })}
+                        data.map((row, index) => (
+                            <tr key={index}>
+                                {Object.values(row).map((item, indexOfItem) => (
+                                    Array.isArray(item) == true ?
+                                        <td key={indexOfItem}><Table data={item} /></td> :
+                                        <td key={indexOfItem}>{item}</td>
+                                ))}
                             </tr>
-                        })
+                        ))
                     }
                 </tbody>
             </table>

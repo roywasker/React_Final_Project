@@ -17,7 +17,8 @@ const Register = () => {
     userName: "",
     password: "",
     others: false,
-    admin: false
+    admin: false,
+    productsBought: [{}]
   })
 
   /**
