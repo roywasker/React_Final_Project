@@ -1,36 +1,53 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Table from '../Table';
 
 
 const Product = ({ data, status }) => {
 
     const [updateProduct, setUpdateProduct] = useState(data)
 
+    //get all categories and product form DB
     const categories = useSelector((state) => state.categories.categories);
     const products = useSelector((state) => state.products.products);
     const dispatch = useDispatch();
 
+    /**
+     * Function to Add/Update product data
+     * @returns 
+     */
     const handleButton = () => {
+
+        //check that all the filed in filled
         if (updateProduct.title == "" || updateProduct.category == "" || updateProduct.description == "" || updateProduct.price == "" || updateProduct.linkToPic == "") {
             alert("Fill all the field")
             return
         }
+        // if user dont update data do noting
         if (updateProduct == data) {
             return
         }
+
+
         const findproduct = products.find((product) => product.title == updateProduct.title)
+
+        // check that user dont enter 2 product with same title
         if (findproduct != undefined && updateProduct.id != findproduct.id) {
             alert("The product is alrady exists")
             return
         }
+
         if (status == "add") {
             dispatch({ type: 'ADD_PRODUCTS', payload: updateProduct })
         } else {
             dispatch({ type: 'UPDATE_PRODUCTS', payload: updateProduct })
         }
+
     }
     return (
         <div style={{ backgroundColor: 'WhiteSmoke', borderRadius: "5px", marginTop: "2%", height: "340px" }}>
+
+            {/* Show all the data of the product */}
             <div style={{ display: 'flex', justifyContent: 'space-between', padding: "2%" }}>
                 <div style={{ flex: 1, marginTop: "2%", textAlign: 'left' }}>
                     <strong>Title: </strong>
@@ -61,6 +78,7 @@ const Product = ({ data, status }) => {
                         <input type="text" value={updateProduct.linkToPic} onChange={e => setUpdateProduct({ ...updateProduct, linkToPic: e.target.value })} /> <br /> <br />
 
                         <strong style={{ textAlign: 'left' }}>Bought By: </strong>
+                        <Table data={updateProduct.boughtBy} />
 
                     </div>
                 </div>

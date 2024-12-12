@@ -1,13 +1,16 @@
-import React, { useState ,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Menu from './Menu';
 import { useSelector } from 'react-redux';
 import Product from './Product';
 
 const Products = () => {
+
+    // get all the product from DB
     const products = useSelector((state) => state.products.products);
 
     const [addNew, setAddNew] = useState(false);
 
+    // Empty product object for add new one
     const emptyProduct = {
         title: "",
         category: "",
@@ -17,10 +20,11 @@ const Products = () => {
         boughtBy: [{}],
     };
 
+    //after add new product close windows of add new product
     useEffect(() => {
-      setAddNew(false)
+        setAddNew(false)
     }, [products])
-    
+
 
     const handleAddNew = () => {
         setAddNew(!addNew);
@@ -32,9 +36,10 @@ const Products = () => {
                 <Menu />
             </div>
 
-            <div style={{ backgroundColor: 'LightGray', width: '800px', padding: '20px', marginLeft: '20%' ,marginTop: '100px'}}>
+            <div style={{ backgroundColor: 'LightGray', width: '800px', padding: '20px', marginLeft: '20%', marginTop: '100px' }}>
                 <h1 style={{ textAlign: 'left' }}>Products</h1>
 
+                {/* Show all the product form list */}
                 {products.map((product, index) => (
                     <Product key={index} data={product} status="update" />
                 ))}
