@@ -52,15 +52,15 @@ const Statistics = () => {
   const COLORS = ['#FF6347', '#4682B4', '#FFD700', '#32CD32', '#8A2BE2'];
 
   return (
-    <div className='div-1'>
-      <div className='div-2'>
+    <div className='statistics-div-1'>
+      <div className='statistics-div-2'>
         <Menu />
       </div>
 
-      <div className='div-3'>
+      <div className='statistics-div-3'>
         <h1>Statistics</h1>
 
-        <div className='div-4'>
+        <div className='statistics-div-4'>
           {/* left graph*/}
           <div className='left-graph'>
             <select name="customers selection" className='select-style' 

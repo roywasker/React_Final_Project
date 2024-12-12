@@ -32,12 +32,12 @@ const Products = () => {
     };
 
     return (
-        <div className='div-1'>
-            <div className='div-2'>
+        <div className='products-div-1'>
+            <div className='products-div-2'>
                 <Menu />
             </div>
 
-            <div className='div-3'>
+            <div className='products-div-3'>
                 <h1 className='text'>Products</h1>
 
                 {/* Show all the product form list */}

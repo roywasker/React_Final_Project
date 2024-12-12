@@ -1,14 +1,14 @@
-.div-1 {
+.customers-div-1 {
     display: flex
 }
 
-.div-2 {
+.customers-div-2 {
     position: absolute;
     top: 0;
     left: 40%
 }
 
-.div-3 {
+.customers-div-3 {
     background-color: LightGray;
     width: 800px;
     padding: 20px;

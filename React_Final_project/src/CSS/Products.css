@@ -1,14 +1,14 @@
-.div-1 {
+.products-div-1 {
     display: flex
 }
 
-.div-2 {
+.products-div-2 {
     position: absolute;
     top: 0;
     left: 40%
 }
 
-.div-3 {
+.products-div-3 {
     background-color: LightGray;
     width: 800px;
     padding: 20px;

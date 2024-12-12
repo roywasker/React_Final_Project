@@ -21,12 +21,12 @@ const Customers = () => {
     
 
     return (
-        <div className='div-1'>
-            <div className='div-2'>
+        <div className='customers-div-1'>
+            <div className='customers-div-2'>
                 <Menu />
             </div>
 
-            <div className='div-3' >
+            <div className='customers-div-3' >
                 <h1>Customers</h1>
                 {<Table data={userData}/>}
             </div>

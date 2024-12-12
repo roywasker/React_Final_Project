@@ -1,14 +1,14 @@
-.div-1 {
+.statistics-div-1 {
     display: flex
 }
 
-.div-2 {
+.statistics-div-2 {
     position: absolute;
     top: 0;
     left: 40%
 }
 
-.div-3 {
+.statistics-div-3 {
     background-color: LightGray;
     width: 1000px;
     padding: 20px;
@@ -17,7 +17,7 @@
     height: 600px
 }
 
-.div-4 {
+.statistics-div-4 {
     display: flex;
     justify-content: space-between;
 }
