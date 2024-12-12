@@ -1,0 +1,33 @@
+.product-container {
+    background-color: WhiteSmoke;
+    border-radius: 5px;
+    margin-top: 2%;
+    height: 340px;
+  }
+
+.small-product-container {
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .product-left {
+    flex: 1;
+    margin-top: 2%;
+    text-align: left;
+  }
+  
+  .product-right {
+    flex: 1;
+    text-align: right;
+    margin-top: 2%;
+  }
+
+  .product-button {
+    background-color: LimeGreen;
+    color: white;
+  }
+
+  .text-left{
+    text-align: left
+  }

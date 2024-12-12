@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Table from '../Table';
-
+import '../CSS/Product.css'
 
 const Product = ({ data, status }) => {
 
@@ -45,11 +45,11 @@ const Product = ({ data, status }) => {
 
     }
     return (
-        <div style={{ backgroundColor: 'WhiteSmoke', borderRadius: "5px", marginTop: "2%", height: "340px" }}>
+        <div className='product-container'>
 
             {/* Show all the data of the product */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', padding: "2%" }}>
-                <div style={{ flex: 1, marginTop: "2%", textAlign: 'left' }}>
+            <div className='small-product-container'>
+                <div className='product-left'>
                     <strong>Title: </strong>
                     <input type="text" value={updateProduct.title} onChange={e => setUpdateProduct({ ...updateProduct, title: e.target.value })} /> <br /> <br />
 
@@ -65,19 +65,19 @@ const Product = ({ data, status }) => {
                     <strong>Description: </strong> <br />
                     <textarea id="description" rows="5" cols="40" value={updateProduct.description} onChange={e => setUpdateProduct({ ...updateProduct, description: e.target.value })}></textarea> <br /> <br />
 
-                    <button style={{ backgroundColor: 'LimeGreen', color: 'white' }} onClick={handleButton}> {status === "add" ? "Add Product" : "Save"}</button>
+                    <button className='product-button' onClick={handleButton}> {status === "add" ? "Add Product" : "Save"}</button>
 
                 </div>
 
-                <div style={{ flex: 1, textAlign: 'right', marginTop: "2%" }}>
-                    <div style={{ textAlign: 'left' }}>
-                        <strong style={{ textAlign: 'left' }}>Price: </strong>
+                <div className='product-right'>
+                    <div className='text-left'>
+                        <strong className='text-left'>Price: </strong>
                         <input type="number" value={updateProduct.price} onChange={e => setUpdateProduct({ ...updateProduct, price: e.target.value })} /> <br /> <br />
 
-                        <strong style={{ textAlign: 'left' }}>Link to Pic: </strong>
+                        <strong className='text-left'>Link to Pic: </strong>
                         <input type="text" value={updateProduct.linkToPic} onChange={e => setUpdateProduct({ ...updateProduct, linkToPic: e.target.value })} /> <br /> <br />
 
-                        <strong style={{ textAlign: 'left' }}>Bought By: </strong>
+                        <strong className='text-left'>Bought By: </strong>
                         <Table data={updateProduct.boughtBy} />
 
                     </div>

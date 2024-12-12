@@ -1,0 +1,28 @@
+.register-container {
+    background-color: gainsboro;
+    width: 100%;
+    padding: 50px;
+  }
+  
+  .register-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .register-label {
+    text-align: left;
+  }
+  
+  .register-input {
+    width: 90%;
+    height: 25px;
+    border-radius: 5px;
+  }
+  
+  .register-button {
+    background-color: dodgerblue;
+    color: white;
+    width: 90%;
+  }

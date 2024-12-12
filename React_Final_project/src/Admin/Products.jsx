@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Menu from './Menu';
 import { useSelector } from 'react-redux';
 import Product from './Product';
+import '../CSS/Products.css'
 
 const Products = () => {
 
@@ -31,22 +32,20 @@ const Products = () => {
     };
 
     return (
-        <div style={{ display: 'flex' }}>
-            <div style={{ position: 'absolute', top: 0, left: '40%' }}>
+        <div className='div-1'>
+            <div className='div-2'>
                 <Menu />
             </div>
 
-            <div style={{ backgroundColor: 'LightGray', width: '800px', padding: '20px', marginLeft: '20%', marginTop: '100px' }}>
-                <h1 style={{ textAlign: 'left' }}>Products</h1>
+            <div className='div-3'>
+                <h1 className='text'>Products</h1>
 
                 {/* Show all the product form list */}
                 {products.map((product, index) => (
                     <Product key={index} data={product} status="update" />
                 ))}
 
-                <button style={{ backgroundColor: 'DodgerBlue', color: 'white', marginTop: '20px', padding: '10px 15px' }}
-                    onClick={handleAddNew}>Add New</button>
-
+                <button className='button-style'onClick={handleAddNew}>Add New</button>
                 {addNew && <Product data={emptyProduct} status="add" />}
             </div>
         </div>

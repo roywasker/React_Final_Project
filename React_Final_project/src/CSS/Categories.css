@@ -1,0 +1,60 @@
+.categories-container {
+    display: flex;
+  }
+  
+  .menu-container {
+    position: absolute;
+    top: 0;
+    left: 40%;
+  }
+  
+  .categories-content {
+    margin-top: 100px;
+    padding: 20px;
+    background-color: lightgray;
+  }
+  
+  .categories-title {
+    text-align: left;
+  }
+  
+  .categories-list {
+    padding: 20px;
+    width: 500px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+  }
+  
+  .category-item {
+    text-align: left;
+    background-color: whitesmoke;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .text-input{
+    height: 28px 
+  }
+
+  .h2-style{
+    display: inline
+  }
+
+  .category-input {
+    margin-right: 4%;
+    border-radius: 5px;
+    width: 80%;
+    height: 28px;
+  }
+  
+  .button-update, .button-remove {
+    background-color: lightgray;
+    margin-left: 5%;
+  }
+  
+  .button-add {
+    background-color: limegreen;
+  }
+  

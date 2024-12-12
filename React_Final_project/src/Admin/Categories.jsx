@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Menu from './Menu'
 import { useSelector, useDispatch } from 'react-redux'
-
+import '../CSS/Categories.css'
 
 const Categories = () => {
 
@@ -87,34 +87,33 @@ const Categories = () => {
     }
 
     return (
-        <div style={{display: 'flex'}}>
-            <div style={{position: 'absolute',top: 0,left: "40%",}}>
+        <div className='categories-container'>
+            <div className='menu-container'>
                 <Menu />
             </div>
 
             {/* Categories content below Menu */}
-            <div style={{marginTop: '100px', padding: '20px',backgroundColor: "LightGray",
-            }}>
-                <h1 style={{ textAlign: "left" }}>Categories</h1>
-                <div style={{padding: "20px", width: "500px", backgroundColor: 'WhiteSmoke',borderRadius: "5px"}}>
+            <div className='categories-content'>
+                <h1  className='categories-title'>Categories</h1>
+                <div className='categories-list'>
                     {categories.map((category) => (
-                        <div key={category.id} style={{textAlign: "left", backgroundColor: 'WhiteSmoke', border: "1px solid Gainsboro", borderRadius: "5px", padding: "20px", marginBottom: "10px"}}>
+                        <div key={category.id} className='category-item'>
                             {updatecategory.name === category.name ? (
-                                <input type="text" value={updatecategory.newName} style={{ height: "28px" }}
+                                <input type="text" value={updatecategory.newName} className='text-input'
                                     onChange={e => setUpdateCategory({ ...updatecategory, newName: e.target.value })}/>
                             ) : (
-                                <h2 style={{ display: 'inline' }}>{category.name}</h2>
+                                <h2 className='h2-style'>{category.name}</h2>
                             )}
-                            <button style={{ backgroundColor: "LightGray", marginLeft: "5%" }} onClick={() => handleUpdateCategory(category)}>Update</button>
-                            <button style={{ backgroundColor: "LightGray", marginLeft: "5%" }} onClick={() => handleDeleteCategory(category)}>Remove</button>
+                            <button className='button-update' onClick={() => handleUpdateCategory(category)}>Update</button>
+                            <button className='button-remove' onClick={() => handleDeleteCategory(category)}>Remove</button>
                         </div>
                     ))}
                     <input type="text" name='new category'
-                        style={{ marginRight: "4%", borderRadius: "5px", width: "80%", height: "28px" }}
+                        className='category-input'
                         value={newcategory.name}
                         onChange={e => setNewCategory({ ...newcategory, name: e.target.value })}
                         placeholder="Add new category"/>
-                    <button style={{ backgroundColor: "LimeGreen" }} onClick={handleAddNewCategory}>Add</button>
+                    <button className='button-add' onClick={handleAddNewCategory}>Add</button>
                 </div>
             </div>
         </div>

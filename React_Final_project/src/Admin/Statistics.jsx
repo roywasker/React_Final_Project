@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import Menu from './Menu';
 import { useSelector } from 'react-redux';
 import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
+import '../CSS/Statistics.css'
 
 const Statistics = () => {
 
@@ -51,18 +52,18 @@ const Statistics = () => {
   const COLORS = ['#FF6347', '#4682B4', '#FFD700', '#32CD32', '#8A2BE2'];
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <div style={{ position: 'absolute', top: 0, left: '40%' }}>
+    <div className='div-1'>
+      <div className='div-2'>
         <Menu />
       </div>
 
-      <div style={{ backgroundColor: 'LightGray', width: '1000px', padding: '20px', marginLeft: '20%', marginTop: '100px', height: "600px" }}>
+      <div className='div-3'>
         <h1>Statistics</h1>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div className='div-4'>
           {/* left graph*/}
-          <div style={{ width: '46%', marginTop:"15%"}}>
-            <select name="customers selection" style={{backgroundColor:'LightGray', borderRadius: "15px", width: "30%", height: "10%"}} 
+          <div className='left-graph'>
+            <select name="customers selection" className='select-style' 
             onChange={(e) => setCurrentUser(customers.find(user => user.id == e.target.value))}
             value={currentUser.id}>
               {customers.map((customer)=>{
@@ -85,7 +86,7 @@ const Statistics = () => {
           </div>
 
           {/*right graph */}
-          <div style={{ width: '46%' }}>
+          <div className='right-graph'>
             <PieChart width={450} height={450}>
               <Pie
                 data={dataOfProduct}

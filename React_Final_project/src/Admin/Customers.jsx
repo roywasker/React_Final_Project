@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Menu from './Menu';
 import Table from '../Table';
 import { useSelector } from 'react-redux'
+import '../CSS/Customers.css'
 
 
 const Customers = () => {
@@ -20,12 +21,12 @@ const Customers = () => {
     
 
     return (
-        <div style={{ display: 'flex' }}>
-            <div style={{ position: 'absolute', top: 0, left: '40%' }}>
+        <div className='div-1'>
+            <div className='div-2'>
                 <Menu />
             </div>
 
-            <div style={{ backgroundColor: 'LightGray', width: '800px', padding: '20px', marginLeft: '20%', marginTop: '100px' }}>
+            <div className='div-3' >
                 <h1>Customers</h1>
                 {<Table data={userData}/>}
             </div>

@@ -1,0 +1,17 @@
+.div-1 {
+    display: flex
+}
+
+.div-2 {
+    position: absolute;
+    top: 0;
+    left: 40%
+}
+
+.div-3 {
+    background-color: LightGray;
+    width: 800px;
+    padding: 20px;
+    margin-left: 2%;
+    margin-top: 100px
+}
