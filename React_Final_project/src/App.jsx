@@ -7,6 +7,7 @@ import Categories from './Admin/Categories'
 import Products from './Admin/Products'
 import Customers from './Admin/Customers'
 import Statistics from './Admin/Statistics'
+import MyAccount from './Customer/MyAccount'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route path='/products' element={<Products/>} />
       <Route path='/customers' element={<Customers/>} />
       <Route path='/statistics' element={<Statistics/>} />
+      <Route path='/MyAccount' element={<MyAccount/>} />
     </Routes>
   )
 }

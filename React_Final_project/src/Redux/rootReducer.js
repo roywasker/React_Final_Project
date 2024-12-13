@@ -49,7 +49,7 @@ const usersReducer = (state = usersInitialState, action) => {
         case 'ADD_USER':
 
             // build the new user object
-            const newUser = { ...action.payload, id: state.currentId + 1 , joinedAt: new Date().toLocaleDateString() };
+            const newUser = { ...action.payload, id: state.currentId + 1, joinedAt: new Date().toLocaleDateString() };
             const updatedUsers = [...state.users, newUser];
             updateLocalStorage("users", updatedUsers)
             updateLocalStorage("idUser", state.currentId + 1)
@@ -64,6 +64,20 @@ const usersReducer = (state = usersInitialState, action) => {
         case 'LOGIN_USER':
             updateLocalStorage("loginUser", action.payload)
             return { ...state, loginUser: action.payload };
+
+        case 'LOGOUT':
+            updateLocalStorage("loginUser", {})
+            return { ...state, loginUser: {} };
+
+        case 'UPDATE_USER':
+
+            //find the specific user and update his data
+            const modifiedUser = state.users.map((user) =>
+                user.id == action.payload.id ? { ...user, ...action.payload } : user
+            );
+            updateLocalStorage("users", modifiedUser);
+            updateLocalStorage("loginUser", action.payload)
+            return { ...state, users: modifiedUser , loginUser: action.payload };
 
 
         default:
@@ -144,7 +158,7 @@ const rootReducer = combineReducers({
     users: usersReducer,
     categories: categoriesReducer,
     products: productsReducer
-    
+
 });
 
 export default rootReducer;

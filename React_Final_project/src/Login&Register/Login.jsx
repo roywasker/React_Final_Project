@@ -40,6 +40,8 @@ const Login = () => {
             //if he have admin permissions go to admin panel
             if (curretUser.admin == true) {
                 navigate('/categories')
+            }else{
+                navigate('/MyAccount')
             }
         } else {
             alert("User name or password is incorrect")

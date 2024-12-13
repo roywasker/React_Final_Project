@@ -11,7 +11,7 @@ const Menu = () => {
 
     // if any user is not login return to login page
     useEffect(() => {
-        if (loginUser.userName == undefined) {
+        if (loginUser.userName == undefined||loginUser.admin == false) {
             navigate('/')
         }
     },)

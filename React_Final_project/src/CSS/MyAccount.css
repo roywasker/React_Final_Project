@@ -1,0 +1,42 @@
+.myAccount-container {
+    display: flex;
+  }
+  
+  .menu-container-myAccount {
+    position: absolute;
+    top: 0;
+    left: 28%;
+    margin-top: 1.5%;
+  }
+  
+  .myAccount-content {
+    margin-top: 50px;
+    padding: 40px;
+    background-color: lightgray;
+    width: 500px;
+  }
+
+  .myAccount-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .myAccount-label {
+    text-align: left;
+  }
+  
+  .myAccount-input {
+    width: 90%;
+    height: 25px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px; 
+  }
+  
+  .myAccount-button {
+    background-color: LimeGreen;
+    color: white;
+    width: 90%;
+  }
