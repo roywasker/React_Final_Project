@@ -19,7 +19,8 @@ const Register = () => {
     password: "",
     others: false,
     admin: false,
-    productsBought: [{}]
+    productsBought: [{}],
+    myOrder: [{}]
   })
 
   /**

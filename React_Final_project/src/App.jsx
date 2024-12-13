@@ -8,6 +8,7 @@ import Products from './Admin/Products'
 import Customers from './Admin/Customers'
 import Statistics from './Admin/Statistics'
 import MyAccount from './Customer/MyAccount'
+import MyOrder from './Customer/MyOrder'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Route path='/customers' element={<Customers/>} />
       <Route path='/statistics' element={<Statistics/>} />
       <Route path='/MyAccount' element={<MyAccount/>} />
+      <Route path='/MyOrders' element={<MyOrder/>} />
     </Routes>
   )
 }
