@@ -41,7 +41,7 @@ const Login = () => {
             if (curretUser.admin == true) {
                 navigate('/categories')
             }else{
-                navigate('/MyAccount')
+                navigate('/Product')
             }
         } else {
             alert("User name or password is incorrect")

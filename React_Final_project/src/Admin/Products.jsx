@@ -19,6 +19,7 @@ const Products = () => {
         price: "",
         linkToPic: "",
         boughtBy: [{}],
+        qty:0
     };
 
     //after add new product close windows of add new product

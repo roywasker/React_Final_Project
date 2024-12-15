@@ -28,7 +28,7 @@ const Menu_Cust = () => {
     return (
         <div>
             <div style={{width:"900px"}}>
-                <Link to='/Products' style={{ color: "black", marginRight: "15%" }}>Products</Link>
+                <Link to='/Product' style={{ color: "black", marginRight: "15%" }}>Products</Link>
                 <Link to='/MyOrders' style={{ color: "black", marginRight: "15%" }}>My Orders</Link>
                 <Link to='/MyAccount' style={{ color: "black", marginRight: "15%" }}>My Account</Link>
                 <Link onClick={logout} style={{ color: "black"}}>Log out</Link>

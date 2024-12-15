@@ -1,0 +1,25 @@
+.Main-container {
+    display: flex;
+  }
+  
+  .menu-container-Main {
+    position: absolute;
+    top: 0;
+    left: 28%;
+    margin-top: 1.5%;
+  }
+  
+  .Main-content-filter {
+    margin-top: 50px;
+    padding: 10px;
+    background-color: lightgray;
+    width: 900px;
+  }
+
+  .Main-content {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: GhostWhite;
+    width: 400px;
+    margin-right: 2%;
+  }

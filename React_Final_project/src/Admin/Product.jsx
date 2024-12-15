@@ -77,6 +77,9 @@ const Product = ({ data, status }) => {
                         <strong className='text-left'>Link to Pic: </strong>
                         <input type="text" value={updateProduct.linkToPic} onChange={e => setUpdateProduct({ ...updateProduct, linkToPic: e.target.value })} /> <br /> <br />
 
+                        <strong className='text-left'>Qty: </strong>
+                        <input type="number" value={updateProduct.qty} onChange={e => setUpdateProduct({ ...updateProduct, qty: e.target.value })} /> <br /> <br />
+
                         <strong className='text-left'>Bought By: </strong>
                         <Table data={updateProduct.boughtBy} />
 
