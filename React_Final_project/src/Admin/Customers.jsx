@@ -18,7 +18,6 @@ const Customers = () => {
                 Products_Bought: user.myOrder
             }))
     );
-    
 
     return (
         <div className='customers-div-1'>
@@ -28,7 +27,7 @@ const Customers = () => {
 
             <div className='customers-div-3' >
                 <h1>Customers</h1>
-                {<Table data={userData}/>}
+                {userData.length  > 0 ? <Table data={userData}/> : null}
             </div>
         </div>
     )

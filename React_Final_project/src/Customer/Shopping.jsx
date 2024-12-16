@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 
-function Shopping({order , setOrder , handleQtyOrder}) {
+function Shopping({ order, handleQtyOrder }) {
 
   const categories = useSelector((state) => state.categories.categories);
   const products = useSelector((state) => state.products.products);
@@ -10,24 +10,33 @@ function Shopping({order , setOrder , handleQtyOrder}) {
 
   const [productsWithBought, setProductsWithBought] = useState(products)
 
+  const [filter, setFilter] = useState({
+    category: "All",
+    price: maxPrice,
+    title: ""
+  })
+
+  /**
+   * Update how much customer buy each products
+   */
   useEffect(() => {
     const updatedProducts = products.map((product) => {
       let counter = 0;
 
       product.boughtBy.forEach((row) => {
-        const allowOther = users.find((user) => user.username === row.name)?.others;
+        const allowOther = users.find((user) => user.userName == row.name);
         if (allowOther) {
           counter += Number(row.qty);
         }
       });
-
       return { ...product, bought: counter }
     });
     setProductsWithBought(updatedProducts)
   }, [products, users]);
 
-
-
+  /**
+   * calcation the max price of all products
+   */
   const maxPrice = useMemo(() => {
     return productsWithBought.reduce((max, product) => {
       const price = Number(product.price);
@@ -35,12 +44,9 @@ function Shopping({order , setOrder , handleQtyOrder}) {
     }, 0);
   }, [productsWithBought]);
 
-  const [filter, setFilter] = useState({
-    category: "All",
-    price: maxPrice,
-    title: ""
-  })
-
+  /**
+   * filter the products by the customer input
+   */
   const filteredProducts = useMemo(() => {
     return productsWithBought.filter((product) => {
       const matchesCategory = filter.category === 'All' || product.category === filter.category;
@@ -50,6 +56,10 @@ function Shopping({order , setOrder , handleQtyOrder}) {
     });
   }, [filter, productsWithBought]);
 
+
+  /**
+   * clear filter data
+   */
   const clearFilter = () => {
     setFilter({
       category: "All",
@@ -75,7 +85,7 @@ function Shopping({order , setOrder , handleQtyOrder}) {
         {filter.price}$
         Title:
         <input type="text" value={filter.title} onChange={e => setFilter({ ...filter, title: e.target.value })} style={{ width: "15%", marginLeft: "1%" }} />
-        <button style={{ width: '70px', marginLeft: "2%" }} onClick={clearFilter}>Clear</button>
+        <button style={{ width: '70px', marginLeft: "1%" }} onClick={clearFilter}>Clear</button>
 
       </div>
 

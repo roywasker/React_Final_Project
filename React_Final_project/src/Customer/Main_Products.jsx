@@ -7,10 +7,17 @@ import { useSelector } from 'react-redux'
 
 const Main_Products = () => {
 
+    // store cart 
     const [order, setOrder] = useState([])
     const products = useSelector((state) => state.products.products);
 
+    /**
+     * Change the amount of products in the cart
+     * @param {*} action Increase or decrease the amount of products
+     * @param {*} name name of the product
+     */
     const handleQtyOrder = (action, name) => {
+
         const productToOrder = products.find((product) => product.title === name)
         const productQty = productToOrder.qty
         const productPrice = productToOrder.price

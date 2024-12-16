@@ -9,11 +9,18 @@ const Cart = ({ order, setOrder, handleQtyOrder }) => {
 
   const loginUser = useSelector((state) => state.users.loginUser); // store the current login user
 
+  /**
+   * Function to delete product form cart
+   * @param {*} name name of the product
+   */
   const handleDelOrder = (name) => {
     const modifierOrder = order.filter((product) => product.name != name)
     setOrder(modifierOrder)
   }
 
+  /**
+   * calcation total price of order
+   */
   useEffect(() => {
     let sum = 0;
     order.forEach(element => {
@@ -22,6 +29,10 @@ const Cart = ({ order, setOrder, handleQtyOrder }) => {
     setTotalPrice(sum)
   }, [order])
 
+
+  /**
+   * Function to update the DB with new order
+   */
   const hadleOrder = () => {
     order.forEach(element => {
       dispatch({ type: 'ADD_ORDER_PRODUCT', payload: { title: element.name , name: loginUser.userName, qty: element.qty, date: new Date().toLocaleDateString() } })
