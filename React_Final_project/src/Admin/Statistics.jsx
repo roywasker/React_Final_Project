@@ -19,7 +19,7 @@ const Statistics = () => {
    */
   const dataOfProduct = useMemo(() => {
 
-    //for all product sum all the sold qtr
+    //for all product sum all the sold qty
     return products.map((product) => {
       let counter = 0;
       if (product.boughtBy && Array.isArray(product.boughtBy)) {
@@ -42,10 +42,11 @@ const Statistics = () => {
     //for all product save the qtr
     return currentUser.productsBought.map((row)=>{
       return {
-        name: row.title,
-        value: row.qtr,
+        name: row.name,
+        value: row.qty,
       };
     })
+
   }, [currentUser])
 
   //set color for the Chart 

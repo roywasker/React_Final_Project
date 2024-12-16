@@ -77,7 +77,50 @@ const usersReducer = (state = usersInitialState, action) => {
             );
             updateLocalStorage("users", modifiedUser);
             updateLocalStorage("loginUser", action.payload)
-            return { ...state, users: modifiedUser , loginUser: action.payload };
+            return { ...state, users: modifiedUser, loginUser: action.payload };
+
+        case 'ADD_ORDER_CUSTOMER':
+
+            //find the specific user and update his data
+            const modifiedCustomer = state.users.map((user) => {
+                if (user.id == action.payload.id) {
+                    const myOrder = user.myOrder || [];
+                    return { ...user, myOrder: [...myOrder, { product: action.payload.product, qty: action.payload.qty, total: action.payload.total, date: action.payload.date }] }
+                }
+                return user;
+            });
+            updateLocalStorage("users", modifiedCustomer);
+            const login = modifiedCustomer.find((user) => user.id == state.loginUser.id)
+            updateLocalStorage("loginUser", login)
+            return { ...state, users: modifiedCustomer , loginUser: login};
+
+        case 'ADD_BOUGHT_PRODUCT':
+
+            //find the specific user and update his data
+            const modifiedBought = state.users.map((user) => {
+                if (user.id == action.payload.id) {
+                    const productsBought = user.productsBought || [];
+                    const updatedProducts = productsBought.map((product) => {
+                        if (product.name === action.payload.name) {
+                            return { ...product, qty: (product.qty || 0) + action.payload.qty };
+                        }
+                        return product;
+                    });
+        
+                    // if its first order from this product
+                    const isNewProduct = !productsBought.some((product) => product.name == action.payload.name);
+                    if (isNewProduct) {
+                        updatedProducts.push({ name: action.payload.name, qty: action.payload.qty });
+                    }
+        
+                    return { ...user, productsBought: updatedProducts };
+                }
+                return user;
+            });
+            updateLocalStorage("users", modifiedBought);
+            const loginForBuy = modifiedBought.find((user) => user.id == state.loginUser.id)
+            updateLocalStorage("loginUser", loginForBuy)
+            return { ...state, users: modifiedBought , loginUser: loginForBuy};
 
 
         default:
@@ -147,6 +190,20 @@ const productsReducer = (state = productsInitialState, action) => {
             );
             updateLocalStorage("products", modifiedProducts);
             return { ...state, products: modifiedProducts };
+
+        case 'ADD_ORDER_PRODUCT':
+
+            //find the specific product and update his data
+            const modifiedProduct = state.products.map((product) => {
+                if (product.title === action.payload.title) {
+                    const boughtBy = product.boughtBy || [];
+                    const updatedQty = product.qty - action.payload.qty
+                    return { ...product, qty: updatedQty, boughtBy: [...boughtBy, {name: action.payload.name ,qty: action.payload.qty ,date: action.payload.date }] }
+                }
+                return product;
+            });
+            updateLocalStorage("products", modifiedProduct);
+            return { ...state, products: modifiedProduct };
 
         default:
             return state;

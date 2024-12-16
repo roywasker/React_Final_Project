@@ -15,7 +15,7 @@ const Customers = () => {
             .map((user) => ({
                 Full_Name: user.firstName+" "+user.lastName,
                 Joined_At: user.joinedAt,
-                Products_Bought: user.productsBought
+                Products_Bought: user.myOrder
             }))
     );
     

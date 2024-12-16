@@ -2,7 +2,7 @@ import React from 'react'
 
 const Table = ({ data }) => {
 
-    const headers = Object.keys(data[0]);
+    const headers = Object.keys(data[1]);
 
     return (
         <div style={{ marginLeft: "10%", marginTop: "2%", marginBottom: "2%" }}>

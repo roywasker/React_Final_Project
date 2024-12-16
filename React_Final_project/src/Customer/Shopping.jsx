@@ -2,15 +2,13 @@ import React, { useState, useMemo, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 
-function Shopping({order , setOrder}) {
+function Shopping({order , setOrder , handleQtyOrder}) {
 
   const categories = useSelector((state) => state.categories.categories);
   const products = useSelector((state) => state.products.products);
   const users = useSelector((state) => state.users.users);
 
   const [productsWithBought, setProductsWithBought] = useState(products)
-
-//  const [order, setOrder] = useState([{}])
 
   useEffect(() => {
     const updatedProducts = products.map((product) => {
@@ -60,37 +58,12 @@ function Shopping({order , setOrder}) {
     })
   }
 
-  const handleQtyOrder = (action, name) => {
-    const productQty = productsWithBought.find((product) => product.title === name).qty
-    // Find the product in the order
-    const updatedOrder = order.map((product) => {
-      if (product.name === name && product.qty < productQty) {
-        // Update the quantity based on the action
-        return { ...product, qty: action === '+' ? product.qty + 1 : product.qty - 1 }
-      }
-      if(product.name === name && action =='-' &&product.qty>0){
-        return { ...product, qty: product.qty - 1 }
-      }
-      return product; // No change for other products
-    });
-
-    // If the product is not in the order, add it
-    if (!updatedOrder.find((product) => product.name === name) && action == '+') {
-      setOrder([...updatedOrder, { name, qty: 1 }]);
-    } else {
-      // Filter out products with qty 0
-      const finalOrder = updatedOrder.filter((product) => product.qty > 0);
-      setOrder(finalOrder);
-    }
-  };
-
-
   return (
     <div>
       <div style={{ backgroundColor: "gainsboro", textAlign: 'left', padding: '20px' }}>
         filter by :
         Category:
-        <select name="category" style={{ width: "20%", marginLeft: "1%", marginRight: "1%" }} value={filter.category}
+        <select name="category" style={{ width: "15%", marginLeft: "1%", marginRight: "1%" }} value={filter.category}
           onChange={e => setFilter({ ...filter, category: e.target.value })}>
           <option value="All">All</option>
           {categories.map((category) => {
@@ -101,8 +74,8 @@ function Shopping({order , setOrder}) {
         <input type="range" min="0" max={maxPrice} value={filter.price} style={{ width: '16%', marginLeft: "1%", marginRight: "1%" }} onChange={e => setFilter({ ...filter, price: Number(e.target.value) })} />
         {filter.price}$
         Title:
-        <input type="text" value={filter.title} onChange={e => setFilter({ ...filter, title: e.target.value })} style={{ width: "20%", marginLeft: "1%" }} />
-        <button style={{ width: '70px', marginLeft: "1%" }} onClick={clearFilter}>Clear</button>
+        <input type="text" value={filter.title} onChange={e => setFilter({ ...filter, title: e.target.value })} style={{ width: "15%", marginLeft: "1%" }} />
+        <button style={{ width: '70px', marginLeft: "2%" }} onClick={clearFilter}>Clear</button>
 
       </div>
 

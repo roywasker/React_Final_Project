@@ -8,7 +8,6 @@ const MyOrder = () => {
 
     //get the current user log in
     const loginUser = useSelector((state) => state.users.loginUser);
-    const [user,serUser] = useState(loginUser)
 
     return (
         <div className='myOrder-container'>
@@ -19,7 +18,7 @@ const MyOrder = () => {
             {/** show customer order */}
             <div className='myOrder-content'>
                 <h1>My Orders</h1>
-                <Table data={user.myOrder}/>
+                <Table data={loginUser.myOrder}/>
             </div>
         </div >
     )
