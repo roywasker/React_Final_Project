@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import '../CSS/Shopping.css'
 
 
 function Shopping({ order, handleQtyOrder }) {
@@ -70,10 +71,10 @@ function Shopping({ order, handleQtyOrder }) {
 
   return (
     <div>
-      <div style={{ backgroundColor: "gainsboro", textAlign: 'left', padding: '20px' }}>
+      <div className='shopping-div1'>
         filter by :
         Category:
-        <select name="category" style={{ width: "15%", marginLeft: "1%", marginRight: "1%" }} value={filter.category}
+        <select name="category" className='shopping-select' value={filter.category}
           onChange={e => setFilter({ ...filter, category: e.target.value })}>
           <option value="All">All</option>
           {categories.map((category) => {
@@ -81,25 +82,25 @@ function Shopping({ order, handleQtyOrder }) {
           })}
         </select>
         Price :
-        <input type="range" min="0" max={maxPrice} value={filter.price} style={{ width: '16%', marginLeft: "1%", marginRight: "1%" }} onChange={e => setFilter({ ...filter, price: Number(e.target.value) })} />
+        <input type="range" min="0" max={maxPrice} value={filter.price} className='shopping-input1' onChange={e => setFilter({ ...filter, price: Number(e.target.value) })} />
         {filter.price}$
         Title:
-        <input type="text" value={filter.title} onChange={e => setFilter({ ...filter, title: e.target.value })} style={{ width: "15%", marginLeft: "1%" }} />
-        <button style={{ width: '70px', marginLeft: "1%" }} onClick={clearFilter}>Clear</button>
+        <input type="text" value={filter.title} onChange={e => setFilter({ ...filter, title: e.target.value })} className='shopping-input2' />
+        <button className='shopping-btn' onClick={clearFilter}>Clear</button>
 
       </div>
 
       <div style={{ padding: '40px' }}>
         {filteredProducts.map((product) => {
-          return <div key={product.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'WhiteSmoke', borderRadius: '10px', marginTop: '2%', padding: '10px' }}>
+          return <div key={product.id} className='shopping-div2'>
             <div style={{ flex: 1, textAlign: 'left' }}>
               <h2 style={{ textAlign: 'left' }}>{product.title}</h2>
               <h4 style={{ textAlign: 'left' }}>{product.description}</h4>
               <h4 style={{ textAlign: 'left' }}>{product.price}$</h4>
               <h4 style={{ textAlign: 'left' }}>In stock : {product.qty}</h4>
-              <button style={{ backgroundColor: 'gainsboro', marginRight: "2%" }} onClick={() => handleQtyOrder('-', product.title)}>-</button>
-              <input type="text" value={order.find((item) => product.title == item.name)?.qty || 0} readOnly style={{ width: '50px', height: '40px', borderRadius: "40%", textAlign: 'center' }} />
-              <button style={{ backgroundColor: 'gainsboro', marginLeft: "2%" }} onClick={() => handleQtyOrder('+', product.title)}>+</button>
+              <button className='shopping-btn2' onClick={() => handleQtyOrder('-', product.title)}>-</button>
+              <input type="text" value={order.find((item) => product.title == item.name)?.qty || 0} readOnly className='shopping-input3'/>
+              <button className='shopping-btn2' onClick={() => handleQtyOrder('+', product.title)}>+</button>
             </div>
             <div style={{ flex: 1, textAlign: 'center' }}>
               <img src={product.linkToPic} alt={product.title} style={{ width: "200px", height: "200px" }} />

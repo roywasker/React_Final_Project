@@ -1,0 +1,52 @@
+.cart-div1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px
+}
+
+.cart-textLeft {
+    text-align: left
+}
+
+.cart-btn {
+    padding: 10px;
+    font-size: 30px;
+    border: 2px solid black
+}
+
+.cart-div2 {
+    background-color: lightgray;
+    border-radius: 10px;
+    height: 50px;
+    text-align: left;
+    margin-bottom: 3%
+}
+
+.cart-btn2 {
+    background-color: gainsboro;
+    margin-right: 2%;
+    margin-left: 2%;
+    border: 1px solid black;
+    margin-top: 4px
+}
+
+.cart-btn3 {
+    background-color: LightCoral;
+    color: white;
+    margin-left: 2%;
+    border: 1px solid black;
+    margin-top: 4px;
+    border-radius: 30px
+}
+
+.cart-div3 {
+    text-align: left;
+     margin-top: 10%
+}
+
+.cart-btn4 {
+    background-color: green;
+    color: white;
+    border-radius: 20px
+}

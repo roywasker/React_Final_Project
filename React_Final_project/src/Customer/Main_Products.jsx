@@ -62,14 +62,8 @@ const Main_Products = () => {
 
             {!isCartOpen ? <button
                 onClick={() => setIsCartOpen(!isCartOpen)}
-                style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: isCartOpen ? 'auto' : '10px',
-                    padding: '10px',
-                    fontSize: '30px',
-                    border: "2px solid black"
-                }}>
+                style={{left: isCartOpen ? 'auto' : '10px'}}
+                className='btn'>
                 →
             </button> : null}
 

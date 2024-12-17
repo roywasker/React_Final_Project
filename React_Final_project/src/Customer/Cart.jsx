@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import '../CSS/Cart.css'
 
 
 const Cart = ({ order, setOrder, handleQtyOrder, setIsCartOpen, isCartOpen }) => {
@@ -46,43 +47,34 @@ const Cart = ({ order, setOrder, handleQtyOrder, setIsCartOpen, isCartOpen }) =>
   return (
     <>
       <div>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: '10px'
-        }}>
-          <h2 style={{ textAlign: 'left', margin: 0 }}>Cart</h2>
+        <div className='cart-div1'>
+          <h2 className='cart-textLeft'>Cart</h2>
           {isCartOpen && (
             <button
               onClick={() => setIsCartOpen(false)}
-              style={{
-                padding: '10px',
-                fontSize: '30px',
-                border: '2px solid black',
-              }}>
+              className='cart-btn'>
               ←
             </button>
           )}
         </div>
 
         {order.map((product, index) => {
-          return <div key={index} style={{ backgroundColor: "lightgray", borderRadius: '10px', height: '50px', textAlign: 'left', marginBottom: '3%' }}>
+          return <div key={index} className='cart-div2'>
             <div style={{ marginLeft: '1%' }}>
               {product.name}
-              <button style={{ backgroundColor: 'gainsboro', marginRight: "2%", marginLeft: "2%", border: '1px solid black', marginTop: '4px' }} onClick={() => handleQtyOrder('-', product.name)}>-</button>
+              <button className='cart-btn2' onClick={() => handleQtyOrder('-', product.name)}>-</button>
               {product.qty}
-              <button style={{ backgroundColor: 'gainsboro', marginLeft: "2%", border: '1px solid black', marginTop: '4px' }} onClick={() => handleQtyOrder('+', product.name)}>+</button>
+              <button className='cart-btn2' onClick={() => handleQtyOrder('+', product.name)}>+</button>
               {" unit - Total: "}
               {product.qty * product.price}
-              <button style={{ backgroundColor: 'LightCoral', color: 'white', marginLeft: "4%", border: '1px solid black', marginTop: '4px', borderRadius: '30px' }} onClick={() => handleDelOrder(product.name)}>X</button>
+              <button className='cart-btn3' onClick={() => handleDelOrder(product.name)}>X</button>
             </div>
           </div>
         })}
       </div>
-      <div style={{ textAlign: 'left', marginTop: '10%' }}>
+      <div className='cart-div3'>
         <h2>{totlaPrice > 0 ? `Total : ${totlaPrice}$ ` : null}</h2>
-        {totlaPrice > 0 ? <button onClick={hadleOrder} style={{ backgroundColor: 'green', color: 'white', borderRadius: '20px' }}>Order</button> : null}
+        {totlaPrice > 0 ? <button onClick={hadleOrder} className='cart-btn4'>Order</button> : null}
       </div>
     </>
   )
