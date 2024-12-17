@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 
-const Cart = ({ order, setOrder, handleQtyOrder }) => {
+const Cart = ({ order, setOrder, handleQtyOrder, setIsCartOpen, isCartOpen }) => {
 
   const [totlaPrice, setTotalPrice] = useState(0)
   const dispatch = useDispatch();
@@ -35,9 +35,9 @@ const Cart = ({ order, setOrder, handleQtyOrder }) => {
    */
   const hadleOrder = () => {
     order.forEach(element => {
-      dispatch({ type: 'ADD_ORDER_PRODUCT', payload: { title: element.name , name: loginUser.userName, qty: element.qty, date: new Date().toLocaleDateString() } })
-      dispatch({ type: 'ADD_ORDER_CUSTOMER', payload: { id: loginUser.id , product: element.name, qty: element.qty, total: `${element.qty * element.price}$`, date: new Date().toLocaleDateString() } })
-      dispatch({ type: 'ADD_BOUGHT_PRODUCT', payload: { id: loginUser.id ,name: element.name, qty: element.qty } })
+      dispatch({ type: 'ADD_ORDER_PRODUCT', payload: { title: element.name, name: loginUser.userName, qty: element.qty, date: new Date().toLocaleDateString() } })
+      dispatch({ type: 'ADD_ORDER_CUSTOMER', payload: { id: loginUser.id, product: element.name, qty: element.qty, total: `${element.qty * element.price}$`, date: new Date().toLocaleDateString() } })
+      dispatch({ type: 'ADD_BOUGHT_PRODUCT', payload: { id: loginUser.id, name: element.name, qty: element.qty } })
     });
     setOrder([])
   }
@@ -46,7 +46,26 @@ const Cart = ({ order, setOrder, handleQtyOrder }) => {
   return (
     <>
       <div>
-        <h2 style={{ textAlign: 'left' }}>Cart</h2>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '10px'
+        }}>
+          <h2 style={{ textAlign: 'left', margin: 0 }}>Cart</h2>
+          {isCartOpen && (
+            <button
+              onClick={() => setIsCartOpen(false)}
+              style={{
+                padding: '10px',
+                fontSize: '30px',
+                border: '2px solid black',
+              }}>
+              ←
+            </button>
+          )}
+        </div>
+
         {order.map((product, index) => {
           return <div key={index} style={{ backgroundColor: "lightgray", borderRadius: '10px', height: '50px', textAlign: 'left', marginBottom: '3%' }}>
             <div style={{ marginLeft: '1%' }}>

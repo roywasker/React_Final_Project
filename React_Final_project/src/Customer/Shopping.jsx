@@ -10,6 +10,16 @@ function Shopping({ order, handleQtyOrder }) {
 
   const [productsWithBought, setProductsWithBought] = useState(products)
 
+    /**
+   * calcation the max price of all products
+   */
+    const maxPrice = useMemo(() => {
+      return productsWithBought.reduce((max, product) => {
+        const price = Number(product.price);
+        return price > max ? price : max;
+      }, 0);
+    }, [productsWithBought]);
+
   const [filter, setFilter] = useState({
     category: "All",
     price: maxPrice,
@@ -33,16 +43,6 @@ function Shopping({ order, handleQtyOrder }) {
     });
     setProductsWithBought(updatedProducts)
   }, [products, users]);
-
-  /**
-   * calcation the max price of all products
-   */
-  const maxPrice = useMemo(() => {
-    return productsWithBought.reduce((max, product) => {
-      const price = Number(product.price);
-      return price > max ? price : max;
-    }, 0);
-  }, [productsWithBought]);
 
   /**
    * filter the products by the customer input
