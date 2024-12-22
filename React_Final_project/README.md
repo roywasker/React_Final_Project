@@ -53,35 +53,35 @@ This e-commerce website is designed to cater to two distinct operation modes: Ad
 
 ## Screenshots
 #### Login Screen
-![Login_screen](image/Login.png)<br><br>
+![Login_screen](/React_Final_project/image/Login.png)<br><br>
 
 #### Register Screen
 
-![Register_game](image/Register.png)<br><br>
+![Register_game](/React_Final_project/image/Register.png)<br><br>
 
 #### Products Screen
 
-![Products](image/Products.png)<br><br>
+![Products](/React_Final_project/image/Products.png)<br><br>
 
 #### Customers Screen
 
-![Customers](image/Customers.png)<br><br>
+![Customers](/React_Final_project/image/Customers.png)<br><br>
 
 #### Statistics Screen
 
-![Statistics](image/Statistics.png)<br><br>
+![Statistics](/React_Final_project/image/Statistics.png)<br><br>
 
 #### Shopping Screen
 
-![Shopping](image/Shopping.png)<br><br>
+![Shopping](/React_Final_project/image/Shopping.png)<br><br>
 
 #### My Order Screen
 
-![My-Order](image/MyOrder.png)<br><br>
+![My-Order](/React_Final_project/image/MyOrder.png)<br><br>
 
 #### My Account Screen
 
-![My-Account](image/MyAccount.png)<br><br>
+![My-Account](/React_Final_project/image/MyAccount.png)<br><br>
 
 
 ## Technologies Used
